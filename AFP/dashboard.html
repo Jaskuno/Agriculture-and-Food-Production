@@ -26,7 +26,7 @@
 
         .fas.fa-user {
             /* icon to */
-            font-size: 20px;
+            font-size: 30px;
             position: relative;
             left: 50px;
             color: #333;
@@ -50,18 +50,21 @@
         }
 
         .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #333;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            z-index: 1;
-            opacity: 0;
-            transition: opacity 0.3s ease, transform 0.3s ease;
-            /* Add smooth transition for opacity and scale */
-            border-radius: 8px;
-            transform-origin: top right;
-            /* Set transform origin to the top right corner */
-        }
+        top: 4rem;
+        display: none;
+        position: absolute;
+        background-color: #333;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1;
+        opacity: 0;
+        transition: opacity 0.3s ease, transform 0.3s ease;
+        /* Add smooth transition for opacity and scale */
+        border-radius: 8px;
+        transform-origin: top right;
+        /* Set transform origin to the top right corner */
+        width: 150px; /* Set the width to your desired value */
+        height: 100px; /* Set the height to your desired value */
+}
 
         .dropdown-content.active {
             display: block;
@@ -70,10 +73,11 @@
             /* Ensure the menu scales vertically */
         }
 
-        .dropdown-content a {
-            padding: 20px 15px 15px 20px;
-            margin-top: 20px;
-            font-size: 20px;
+        .dropdown-content a { /* yung text sa loob ng profile icon */
+            
+            padding: 2rem 3rem 3rem;
+            margin-top: 30rem;
+            font-size: 25px;
             color: #fff;
             text-decoration: none;
             transition: background-color 0.3s ease;
@@ -83,8 +87,8 @@
         .dropdown-content a:hover {
             background-color: none;
         }
-
-        /*-------------------------------------------*/
+            
+        /*---------------check lang kung nag cocommit----------------------------*/
 
         * {
             margin: 0;
@@ -176,7 +180,7 @@
         }
 
         header .fa-bars {
-            font-size: 3rem;
+            font-size: 6rem;
             color: #333;
             border-radius: 0.5rem;
             padding: 0.5rem 1.5rem;
@@ -237,7 +241,7 @@
             position: relative;
             left: -35px;
             top: 19px;
-            width: 200px;
+            width: 300px;
             height: auto;
             background: #a58030;
             list-style-type: none;
@@ -253,12 +257,13 @@
             font-family: Verdana, Geneva, Tahoma, sans-serif;
             /* Use the specified font stack */
             transition: background-color 0.3s ease;
-            padding-top: 26px;
+            padding-top: 78px;
+            font-size: 200%;
         }
 
         #menu img {
-            height: 90px;
-            width: 90px;
+            height: 100px;
+            width: 110px;
             margin-right: -10px;
             /* Add some right margin for spacing */
         }
