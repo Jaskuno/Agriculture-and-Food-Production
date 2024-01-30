@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agricultural Food Production</title>
+    <style>
+     /*BBBBBBBBBBBBBBBOOOOOOOOOOOOOOOOODDDDDDDDDDDDDDDDDDYYYYYYYYYY*/
+    * a {
+        text-decoration: none;
+        display: inline-block;
+    }
+    body {
+        background-image: url("https://images.unsplash.com/photo-1586771107445-d3ca888129ff?q=80&w=1472&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D");
+        background-color: beige;
+        background-repeat: no-repeat;
+        background-size: cover;
+        height: auto;
+        margin: 0;
+    }
+    #mainBody {
+        position: relative;
+        height: auto;
+        width: 100%;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.267);
+        /*Top Right Bottom Left */
+        color:rgb(255, 255, 255);
+    }
+
+    /*HHHHEEEEEEEEEEEEAAAAAAAAAAAAAAAADDDDDDDDDDDDEEEEEEEEEEEEERRRRRRRRRRR*/
+    #nav {
+        position:relative;
+        display: flex;
+        background-color: #184911;  
+    }
+    #menu {
+        position: absolute;
+        top:20%;
+        text-align: center;
+        right: 0;
+        padding: 10px 10px 5px 5px;
+        display: inline-flex;
+    }
+    /* liness in between ng menus */
+    #menu a {   
+        margin-right: 10px;
+        border-right: 1px solid grey;
+        font-family: 'Times New Roman';
+        padding: 10px 10px 5px 5px;
+        font-size: 25px;
+        color:white;
+        border-radius: 15px;
+    }
+    #menu a:hover {
+        text-decoration: underline #fdde87c7;
+    }
+        /* Key Access style */
+        .access-key-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Drop down Login
+    #dropdown-container {
+        display: none;
+        position: absolute;
+        background-color: grey;
+        border-radius: 20%;
+        width:90px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    #dropdown-container a {
+        color: black;
+        padding: 5px;
+        font-size: 20px;
+        border-right: none;
+    }
+    #dropdown-container a:hover {
+        background-color: #ddd;
+    }
+    #dropdown:hover #dropdown-container {
+        display: block;
+    } */
+
+    /*MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIIIIIIIIIIIIIIIIIIIIIIIIIIINNNNNNNNNNNNN*/
+
+    .product-intro {
+        position: relative;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.678), rgba(0, 0, 0, 0.856)), url("Pics/Products-Pics/bgs/productsbg.jpeg");
+        padding: 5rem 0;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        text-align: center;
+        position: relative;
+        width: 100%;
+        text-align: center;
+        display:flex;
+        justify-content: center;
+        
+    }
+    .Friuts {
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.459),rgba(0, 0, 0, 0.459)),url("Pics/Products-Pics/bgs/friutsectionbg.png");
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        text-align: center;
+    }
+    .Vegetables {
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.459),rgba(0, 0, 0, 0.459)),url("Pics/Products-Pics/bgs/vegetablesbg.png");
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        text-align: center;
+    }
+    .Crops {
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.459),rgba(0, 0, 0, 0.459)),url("Pics/Products-Pics/bgs/cropsbg.png");
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        text-align: center;
+    }
+    .Seeds {
+        display: flex;
+        padding: 20px;
+        justify-content: center;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.459),rgba(0, 0, 0, 0.459)),url("Pics/Products-Pics/bgs/seedsbg.png");
+        background-position: center;
+        background-size: cover;
+        width: 100%;
+        text-align: center;
+    }
+    .sections {
+        text-align: center; 
+        background-color: #000000bd; 
+        position: relative;
+        right: 1.5%;
+    }
+    .products-container-list {
+        margin-top: -20px;
+        display: inline-flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        background-color: #0b0c0b73;
+    }
+    .product-container {
+        text-align: center;
+        display: block;
+        padding-bottom:50px;
+        background-color: #1111119f;
+        margin: 20px;
+    }
+    .product-container p {
+        padding: 0;
+        margin: 20px 0 0 0;
+    }
+    .product-container .price {
+        background-color: black; 
+        position: relative; 
+        top: 15%;
+    }
+    .product-container img {
+        border-radius: 40%;
+        width: 200px;
+        height: 180px;
+        transition: 1s;
+        padding:10px 20px 0 20px;
+        &:hover {transform: scale(1.05);}
+    }
+    .product-container button {
+        margin-top: 5px;
+    }
+
+   /*FOOOOOOOOOOOOOOOOOOOOOTTTTTTTTTTTTTTTTTTTTTEEEEEEEEEEEEEEEEEEEERRRRRRRRR*/
+
+   #footer {
+            position: relative;
+            display: flex;
+            background-color: #291601;
+            height: auto;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #findUs {
+            list-style-type: none;
+            text-decoration: none;
+            display: inline-flex;
+            column-gap: 20px;
+            margin-left: -40px;
+        }
+
+        #findUs img {
+            height: 30px;
+            width: 30px;
+
+            &:hover {
+                mix-blend-mode: multiply;
+                transition: .3s;
+            }
+
+        }
+
+
+
+</style>
+</head>
+<body>
+    <div id="mainBody">
+        <header id="header">
+            <nav id="nav">
+                <img style="padding-left: 2%; width: 70px; border-radius: 80px; padding-top: 1%; padding-bottom: 1%" src="Pics/Logo-Pics/logo.png"/>
+                <h1 style=" padding: 20px 15px 5px 5px;"><span style="color: rgb(10, 148, 10);">Agriculture</span> & <span style=" color:rgb(250, 201, 151);">Food Production</span></h1>
+                <div id="menu">
+                    <a><img src="Pics/Products-Pics/icons/cart.png" width="25px" height="20px"/></a>
+                    <a href="homeAFP.html"><span>Home</span></a>
+                    <a href="aboutAFP.html"><span>About</span></a>
+                    <a style="text-decoration: underline rgb(197, 115, 47); color: rgb(197, 115, 47);" href="products.html"><span>Products</span></a>
+                    <a href="servicesAFP.html"><span>Services<span></a>
+                    <a id="loginLink" href="http://localhost/AFP/loginAFP.php">Log-in</a>
+                    <!-- <div id="dropdown">
+                        <a href="#"><span>Log-in</span></a>
+                        <div id="dropdown-container">
+                            <a class="dropdown-content" href="http://localhost/AFP/customerLogin.php">Customer</a>
+                            <a class="dropdown-content" href="http://localhost/AFP/loginAFP.php">Employee</a>
+                        </div>
+                    </div> -->
+                </div>
+            </nav>
+        </header>
+
+        <main id="main">
+            <div class="product-intro">
+                <div style="width: 50%;">
+                    <h1>Our Products</h1>
+                    <strong style="font-size:large; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;"> Embrace the freshness, support local farmers, and embark on a journey of flavor and nutrition with our extensive range of farm-fresh products.</strong>
+                </div>
+            </div>
+            <div class="section-container">
+                <section class="Friuts" style="display: inline-block;">
+                    <div class="sections">
+                        <h1 style=" color: rgb(71, 238, 65);padding: 50px;">Friut Section</h1>
+                    </div>
+                    <div class="products-container-list">
+                        <div class="product-container">
+                            <p class="products-name">Apple</p>
+                            <img src="Pics/Products-Pics/friuts/Apple.jpg"/>
+                            <div><price></price><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>  
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Banana</p>
+                            <img src="Pics/Products-Pics/friuts/Banana.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Grapes</p>
+                            <img src="Pics/Products-Pics/friuts/Grapes.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>  
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Lemon</p>
+                            <img src="Pics/Products-Pics/friuts/Lemon.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Watermelon</p>
+                            <img src="Pics/Products-Pics/friuts/Watermelon.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Orange</p>
+                            <img src="Pics/Products-Pics/friuts/Orange.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Pineapple</p>
+                            <img src="Pics/Products-Pics/friuts/Pineapple.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Strawberry</p>
+                            <img src="Pics/Products-Pics/friuts/Strawberry.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                    </div>
+                </section>
+                <section class="Vegetables" style="display: inline-block;">
+                    <div class="sections">
+                        <h1 style=" color: rgb(255, 72, 0); padding: 50px;">Vegetables Section</h1>
+                    </div>
+                    <div class="products-container-list">
+                        <div class="product-container">
+                            <p class="products-name">Bellpepper</p>
+                            <img src="Pics/Products-Pics/vegetables/Bellpepper.jpeg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Broccoli</p>
+                            <img src="Pics/Products-Pics/vegetables/Broccoli.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Vegetables</p>
+                            <img src="Pics/Products-Pics/vegetables/Cabbage.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Carrots</p>
+                            <img src="Pics/Products-Pics/vegetables/Carrots.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Eggplant</p>
+                            <img src="Pics/Products-Pics/vegetables/Eggplant.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Garlic</p>
+                            <img src="Pics/Products-Pics/vegetables/Garlic.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Onion</p>
+                            <img src="Pics/Products-Pics/vegetables/Onion.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Tomato</p>
+                            <img src="Pics/Products-Pics/vegetables/Tomato.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                    </div>
+                </section>
+                <section class="Crops" style="display: inline-block;">
+                    <div class="sections">
+                        <h1 style=" color: rgb(105, 81, 0); padding: 50px;">Crops Section</h1>
+                    </div>
+                    <div class="products-container-list">
+                        <div class="product-container">
+                            <p class="products-name">Barley</p>
+                            <img src="Pics/Products-Pics/crops/Barley.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Corn</p>
+                            <img src="Pics/Products-Pics/crops/Corn.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Millet</p>
+                            <img src="Pics/Products-Pics/crops/Millet.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Rice</p>
+                            <img src="Pics/Products-Pics/crops/Rice.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
+                            <div class="price">Price: 100/kg</div>     
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Wheat</p>
+                            <img src="Pics/Products-Pics/crops/wheat.png"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                    </div>
+                </section>
+                <section class="Seeds" style="display: inline-block;">
+                    <div class="sections">
+                        <h1 style=" color: rgb(105, 81, 0); padding: 50px;">Seeds Section</h1>
+                    </div>
+                    <div class="products-container-list">
+                        <div class="product-container">
+                            <p class="products-name">Grains</p>
+                            <img src="Pics/Products-Pics/seeds/Grains.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Legumes</p>
+                            <img src="Pics/Products-Pics/seeds/Legumes.jpg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
+                            <div class="price">Price: 100/kg</div>    
+                        </div>
+                        <div class="product-container">
+                            <p class="products-name">Nuts</p>
+                            <img src="Pics/Products-Pics/seeds/Nuts.jpeg"/>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>  
+                            <div class="price">Price: 100/kg</div>   
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <footer id="footer">
+            <h2 style="font-family: Lucida Console; color:rgb(255, 255, 255); position: absolute; left: 10px;">GROUP 10 <span style="color: rgb(10, 148, 10);"></h2>
+            <h3 style="font-family: Lucida Console; position: absolute; right: 30px; bottom: 5px;">Contact Us: (63+)9123456789</h3>
+            <ul id="findUs">
+                <li><a href="#"><img src="Pics/Icon-pics/facebook.png"/></a></li>
+                <li><a href="#"><img src="Pics/Icon-pics/instagram.png"/></a></li>
+                <li><a href="#"><img src="Pics/Icon-pics/pinterest.png"/></a></li>
+            </ul>
+        </footer>
+    </div>
+    <!-- Access Key Popup -->
+    <div id="accessKeyPopup" class="access-key-popup">
+        <label for="accessKeyInput">Enter Access Key:</label>
+        <input type="text" id="accessKeyInput">
+        <button onclick="validateAccessKey()">Submit</button>
+    </div>
+    <!-- Access key Popup -->
+    <script>
+        // Function to validate the access key and redirect to the login link
+        function validateAccessKey() {
+            var enteredKey = document.getElementById("accessKeyInput").value;
+            var correctKey = "1234"; // Replace with the actual correct access key
+    
+            if (enteredKey === correctKey) {
+                window.location.href = "http://localhost/AFP/loginAFP.php";
+            } else {
+                alert("Invalid Access Key. Please try again.");
+            }
+        }
+    
+        // Function to display the access key popup
+        function showAccessKeyPopup() {
+            var popup = document.getElementById("accessKeyPopup");
+            popup.style.display = "block";
+        }
+    
+        // Event listener to trigger the popup when the login link is clicked
+        document.getElementById("loginLink").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the default link behavior
+            showAccessKeyPopup();
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+	<head> 
+	<title> Dashboard </title>
+	<style>
+	* {
+		text-decoration: none;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		background: #2D4354;
+	}
+	
+	/*HHHHHHHHEEEEEEEEEEEEAAAAAAAAAAAAADDDDDDDDDEEEEEEEERRRRRRRRRRR*/
+	
+	#burger	{
+		display: block;
+		position: relative;
+		top: 50px;
+		left: 50px;
+		z-index: 1;
+	}
+	#burger input {
+		width: 40px;
+		height: 32px;
+		position: absolute;
+		cursor: pointer;
+		opacity: 0;
+		z-index: 2;
+	}
+	.burgLine {
+		display: block;
+		width: 33px;
+		height: 4px;
+		margin-bottom: 5px;
+		position: relative;
+		background: #cdcdcd;
+		border-radius: 3px;
+		z-index: 1;
+	}
+	#menu {
+		width: 150px;
+		margin: -100px 0 0 -50px;
+		padding: 50px;
+		padding-top: 125px;
+		background: #804832;
+		list-style-type: none;
+		transform: translate(-100%, 0);
+		transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+	}
+	#menu img {
+		border-radius: 100%;
+		height: 30px;
+		width: 30px;
+		position: relative;
+		top: 5px;
+	}
+	#menu li {
+		margin-top:20px;
+		padding: 9.3px 0;
+		font-size: 25px;
+	}
+	#menu a {
+		text-decoration: none;
+		color: white;
+		filter: invert(100%);
+		&:hover{
+			color:grey;
+		}
+	}
+	#burger input:checked ~ ul {
+		transform:none;
+	}
+
+	/*MMMMMMEEEEEEEEEEEEEEEEEEEENNNNNNNNNNNNUUUUUUUUUU*/
+	nav {
+		display: flex;
+		background-color: rgb(43, 19, 0);
+		height: 130px;
+	}
+	#menu span{
+		padding-left: 10px;
+	}
+	#notifications {
+		display: flex;
+		position: relative;
+		top: 43px;
+		left: 100px;
+	}
+	#settings {
+		position: absolute;
+		right: 40px;
+		top: 45px;
+		filter: invert(100%);
+		transition-duration: 1s;
+		&:hover {
+			filter: invert(50%);
+			transform: rotate(180deg);
+		}
+	}
+	
+	
+	/*MAAAAAAAAAAAAAAAAAAAIIIIIIIIIIIIINNNNNNNNNNNNNN*/
+	#main{
+		position:relative;
+		display: flex;
+		background-color:#20212b;
+		width:100%;
+		margin-top:5px;
+	}
+	#mainDiv1 {
+		position: relative;
+		top:0;
+		width: 305px;
+		background-image:url('Pics/bggraph.jpg');
+		background-size: cover;
+	}
+	
+	#mainDiv1 a{
+		display: block;
+		padding:20px;
+		margin: 60px;
+		background-color: orange;
+		width:10px;
+		height:10px;
+	}
+	
+	#mainDiv2 {
+		position: relative;
+		display: flex;
+		width:100%;
+		margin:10px;
+		background-image:url('Pics/bggraph2.png');
+		background-size: cover;
+		background-repeat: no-repeat;
+	}
+	#graphs {
+
+		margin:30px;
+		height: 300px;
+		width: 300px;
+		background-color:green;
+	}
+
+	/* FFFFFFFOOOOOOOOOOOOOOOOOOOOOOOTTTTTTTTTTTTEEEEEEEEEEERRRRRRRRRRRR*/
+	#footer {
+		position: relative;
+		width: 100%;
+		height: 105px;
+		background-color:grey;
+		margin:0;
+	}
+	</style>
+	</head>
+	<body>
+		<header>
+		<nav>
+		<div id="burger">
+			<input type="checkbox" />
+				<li class="burgLine"></li>
+				<li class="burgLine"></li>
+				<li class="burgLine"></li>
+			<ul id="menu">
+			<hr>
+				<a href="#"><li><img src="Pics/Dashboard-Pics/huh.jpeg" style="filter: invert(100%);"/><span>Profile</span></li></a>
+				<a href="#"><li><img src="Pics/Dashboard-Pics/dashboard.png"/><span>Dashboard</span></li></a>
+				<hr>
+				<a href="#"><li><img src="Pics/Dashboard-Pics/orders.png"/><span>Orders</span></li></a>
+				<a href="#"><li><img src="Pics/Dashboard-Pics/inventory.png"/><span>Inventory<span></li></a>
+				<a href="#"><li><img src="Pics/Dashboard-Pics/sales.png"/><span>Sales</span></li></a>
+			</ul>
+		</div>
+		<div id="notifications">
+			<a href="#"><img style="Width:40px; height:40px; filter: invert(100%);" src="Pics/Dashboard-Pics/notif.png"/></a>
+			<div style="overflow:hidden; padding:10px; position: relative; bottom: 33%; left: 12%; align-items: center; justify-content: center;"><h1 style="font-size: 50px;"><img style="position: relative; top: -20px; height: 20ox; width: 70px; border-radius: 100%;" src="Pics/Logo-Pics/logo.png"/><span style="position: relative; bottom: 40px;"><span style="color:rgb(105, 68, 0)"> Agriculture</span> & <span style="color: rgb(0, 80, 0);">Food Production</span></span></h1>
+			</div>
+		</div>
+		<div id="settings">
+			<a href="#"><img width=40px height=40px src="Pics/Dashboard-Pics/settings.png"/></a>
+		</div>
+		</nav>
+		</header>
+		
+		<main id="main">
+			<div id="mainDiv1">
+				<a href="#">etc...</a>
+				<a href="#">etc...</a>
+				<a href="#">etc...</a>
+			</div>
+			<div id="mainDiv2">
+				<img id="graphs" src="Pics/Dashboard-Pics/pics/graph1.png"/>
+				<img id="graphs" src="Pics/Dashboard-Pics/pics/graph2.png"/>
+				<img id="graphs" src="Pics/Dashboard-Pics/pics/graph3.png"/>
+			</div>
+		</main>
+		
+		<footer id="footer">
+			<h1 style="display: flex;"><img style="height:40px; width:40px; position: relative; top:30px; left:20px;" src="Pics/copyright.png"/><p style="position: relative; left:40px; top: 18px; font-size: 20px;">2023 <span style="color:rgb(80, 29, 0)">Agriculture</span> & <span style="color:rgb(0, 80, 0)">Food Production</span> GROUP 10</p></h1>
+		</footer>
+	</body>
+</html>
