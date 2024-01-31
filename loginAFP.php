@@ -88,6 +88,18 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
     #menu a:hover {
         text-decoration: underline #fdde87c7;
     }
+     /* Key Access style */
+    .access-key-popup {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding: 20px;
+        background-color: #fff;
+        border: 1px solid #ccc;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
     /*MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIIIIIIIIIIIIIIIIIIIIIIIIIIINNNNNNNNNNNNN*/
 
     #main {
@@ -196,7 +208,7 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
             }
         }
 
-        #signUp {
+        .signUp {
             margin-top: 10px;
             color: rgb(10, 148, 10);
             font-size: 18px;
@@ -286,7 +298,7 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
                             <a href="#"><img id="x" src="Pics/Login-Pics/xicon.webp"/></a>
                         </div>
                         <hr>
-                        <a href="http://localhost/AFP/Register.php" id="signUp">Sign-Up</a>
+                        <a id="loginLink" href="http://localhost/AFP/Register.php" class="signUp">Sign-Up</a>
                     </div>
                 </form>
             </div>
@@ -303,5 +315,36 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
         </footer>
 
     </div>
+    <div id="accessKeyPopup" class="access-key-popup">
+        <label for="accessKeyInput">Enter Access Key:</label>
+        <input type="text" id="accessKeyInput">
+        <button onclick="validateAccessKey()">Submit</button>
+    </div>
+    <!-- Access key Popup -->
+    <script>
+        // Function to validate the access key and redirect to the login link
+        function validateAccessKey() {
+            var enteredKey = document.getElementById("accessKeyInput").value;
+            var correctKey = "1234"; // Replace with the actual correct access key
+    
+            if (enteredKey === correctKey) {
+                window.location.href = "http://localhost/AFP/Register.php";
+            } else {
+                alert("Invalid Access Key. Please try again.");
+            }
+        }
+    
+        // Function to display the access key popup
+        function showAccessKeyPopup() {
+            var popup = document.getElementById("accessKeyPopup");
+            popup.style.display = "block";
+        }
+    
+        // Event listener to trigger the popup when the login link is clicked
+        document.getElementById("loginLink").addEventListener("click", function (event) {
+            event.preventDefault(); // Prevent the default link behavior
+            showAccessKeyPopup();
+        });
+    </script>
 </body>
 </html>

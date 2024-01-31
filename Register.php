@@ -254,6 +254,8 @@
           <form action="#" method="post">
             <div class="form-group"> <label for="email">Email:</label> <input type="email" id="email" name="uEmail" placeholder="Email" value="<?php echo isset($_POST['uEmail']) ? htmlspecialchars($_POST['uEmail']) : ''; ?>" required> </div>
             <div class="form-group"> <label for="name">Full Name:</label> <input type="text" id="name" name="uName" placeholder="Name" value="<?php echo isset($_POST['uName']) ? htmlspecialchars($_POST['uName']) : ''; ?>" required> </div>
+            <div class="form-group"> <label for="username">Birthday:</label> <input type="Date" id="birthday" name="uBirthday" placeholder="YYYY-MM-DD" value="<?php echo isset($_POST['uBirthday']) ? htmlspecialchars($_POST['uBirthday']) : ''; ?>" required> </div>
+            <div class="form-group"> <label for="username">Address:</label> <input type="text" id="address" name="uAddress" placeholder="Address" value="<?php echo isset($_POST['uAddress']) ? htmlspecialchars($_POST['uAddress']) : ''; ?>" required> </div>
             <div class="form-group"> <label for="username">Username:</label> <input type="text" id="username" name="uUsername" placeholder="Username" value="<?php echo isset($_POST['uUsername']) ? htmlspecialchars($_POST['uUsername']) : ''; ?>" required> </div>
             <div class="form-group"> <label for="password">Password:</label> <input type="password" id="password" name="uPassword" placeholder="Password" required> </div> 
             <input type="submit" value="Register" name="sign-up">
@@ -279,8 +281,8 @@
               } elseif (strlen($_POST['uPassword']) < 8 ) {
                 echo "<div class='style-red'><center>Password must be at least 8 characters.</center></div>";
               } else {
-              $sql = "INSERT into employee (`employee_Email`,`employee_Name`,`employee_Username`,`employee_PW`) 
-              values('$_POST[uEmail]','$_POST[uName]','$_POST[uUsername]','$_POST[uPassword]')"; 
+              $sql = "INSERT into employee (`employee_Email`,`employee_Name`,`employee_Username`,`employee_PW`,`employee_Address`,`employee_Birthdate`,`employee_Company`) 
+              values('$_POST[uEmail]','$_POST[uName]','$_POST[uUsername]','$_POST[uPassword]','$_POST[uAddress]','$_POST[uBirthday]','AFP Company')"; 
               
               $result = mysqli_query($conn,$sql);
                 if ($result) {
