@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Agricultural Food Production</title>
+    <!-- Map API -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
     <style>
     /*BBBBBBBBBBBBBBBOOOOOOOOOOOOOOOOODDDDDDDDDDDDDDDDDDYYYYYYYYYY*/
     * a {
@@ -194,13 +197,6 @@
                 .about-card2:hover {
                     transform: scale(1.05);
                 }
-
-                img {
-                    max-width: 100%;
-                    min-height: max-content;
-                    border-radius: 8px;
-                   
-                }
     </style>
 </head>
 
@@ -284,7 +280,12 @@
                         </div>
                     </div>
                 </section>
+                <div class="map-container" style="text-align: center; ">
+                    <h1 style="color: rgb(0, 0, 0); background-color: wheat; padding: 0%; margin: 0%;">The <span style="color: #184911;">Farm</span><span style="color: #572e00;">Lands</span></h1>
+                                <div id="map" style="height: 300px;"></div>
+                </div>
         <footer id="footer">
+
             <h2 style="font-family: Lucida Console; color:rgb(255, 255, 255); position: absolute; left: 10px;">GROUP 10</h2>
             <h3 style="font-family: Lucida Console; position: absolute; right: 30px; bottom: 5px;">Contact Us: (63+)9123456789</h3>
             <ul id="findUs">
@@ -294,38 +295,33 @@
             </ul>
         </footer>
     </div>
-    <!-- Access Key Popup -->
-    <!-- <div id="accessKeyPopup" class="access-key-popup">
-        <label for="accessKeyInput">Enter Access Key:</label>
-        <input type="text" id="accessKeyInput">
-        <button onclick="validateAccessKey()">Submit</button>
-    </div> -->
-    <!-- Access key Popup -->
-    <!-- <script>
-        // Function to validate the access key and redirect to the login link
-        function validateAccessKey() {
-            var enteredKey = document.getElementById("accessKeyInput").value;
-            var correctKey = "1234"; // Replace with the actual correct access key
     
-            if (enteredKey === correctKey) {
-                window.location.href = "http://localhost/AFP/loginAFP.php";
-            } else {
-                alert("Invalid Access Key. Please try again.");
-            }
-        }
-    
-        // Function to display the access key popup
-        function showAccessKeyPopup() {
-            var popup = document.getElementById("accessKeyPopup");
-            popup.style.display = "block";
-        }
-    
-        // Event listener to trigger the popup when the login link is clicked
-        document.getElementById("loginLink").addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent the default link behavior
-            showAccessKeyPopup();
-        });
-    </script> -->
+    <!-- For Map API -->
+    <script>
+    // Map POV
+        var mymap = L.map('map').setView([14.3359, 121.08850], 10);
+    </script>
+    <script>
+    //Copied API from openstreetmap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; OpenStreetMap contributors'
+        }).addTo(mymap);
+    </script>
+    <script>
+    // Location Marks
+        L.marker([14.354471, 121.081415]).addTo(mymap)
+            .bindPopup('Biñan City Organik Farm.');
+        L.marker([14.3359, 121.08850]).addTo(mymap)
+            .bindPopup('Corpuz Integrated Farm.');
+        L.marker([14.522747, 121.037010]).addTo(mymap)
+            .bindPopup('FARMED FORCES PH.');
+        L.marker([14.575369, 121.041111]).addTo(mymap)
+            .bindPopup('Lao Integrated Farms, Inc.');
+        L.marker([14.195969, 120.976539]).addTo(mymap)
+            .bindPopup('Bronzi Farms.');
+        L.marker([14.145705, 120.888606]).addTo(mymap)
+            .bindPopup('Yokis Farm.');
+    </script>
 </body>
 
 </html>

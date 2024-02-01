@@ -109,6 +109,7 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
         background-color: rgba(0, 0, 0, 0.404);
         padding: 1vh;
         justify-content: center;
+        border-radius: 10%;
     }
 
     /*FOOOOOOOOOOOOOOOOOOOOOTTTTTTTTTTTTTTTTTTTTTEEEEEEEEEEEEEEEEEEEERRRRRRRRR*/
