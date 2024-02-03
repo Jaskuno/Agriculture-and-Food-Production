@@ -53,7 +53,7 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
         position: relative;
         height: auto;
         width: 100%;
-        border-radius: 10px;
+        border-radius: 2px;
         background-color: rgba(0, 0, 0, 0.267);
         /*Top Right Bottom Left */
         color:rgb(255, 255, 255);
