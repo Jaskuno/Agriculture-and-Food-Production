@@ -268,7 +268,7 @@
           <?php $DBHost = "localhost"; //hostname 
           $DBUser = "root"; //username 
           $DBPass = ""; //password 
-          $DBName = "afpdatabase"; //Name 
+          $DBName = "agri"; //Name 
           $conn = mysqli_connect($DBHost, $DBUser, $DBPass, $DBName); 
           if(!$conn) {die("Connection failed:" . mysqli_connect_error());} 
 
