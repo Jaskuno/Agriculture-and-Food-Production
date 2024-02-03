@@ -170,6 +170,7 @@
     /* Style the products container, and products itself */
     .products-container-list {
         margin-top: -20px;
+        width: 100%;
         display: inline-flex;
         flex-wrap: wrap;
         justify-content: center;
@@ -246,8 +247,8 @@
         }
 
         #findUs img {
-            height: 30px;
-            width: 30px;
+            height: 80px;
+            width: 80px;
 
             &:hover {
                 mix-blend-mode: multiply;
@@ -256,7 +257,7 @@
 
         }
     
-        /* Cart Style */
+    /* Cart Style */
     .cart {
       display: none;
       position: fixed;
@@ -269,22 +270,60 @@
       align-items: center;
     }
 
-    .cart-content {
-      background: #fff;
-      padding: 20px;
-      border-radius: 5px;
-      max-width: 400px;
-      margin: 0 auto;
-      text-align: center;
-      
+    .form-container {
+        background: #fff;
+        padding: 2rem;
+        border-radius: 0.5rem;
+        width:auto;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+    .input-container {
+        padding: 10px 5px;
+    }
+    .input-container input {
+        width: 100%;
     }
 
     .close-btn {
       cursor: pointer;
       position: relative;
       float:right;
-      background-color: red;
+      background-color: rgb(94, 46, 8);
+      padding:3px 5px;
+      color: wheat;
+      &:hover {
+        background-color: rgb(151, 0, 0);
+        color:White;
+      }
     }
+
+    #selectedItemsSection {
+        text-align: center;
+    }
+    
+    #selectedItemsList {
+        list-style-type: none;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    
+    #selectedItemsList li {
+        margin: 10px;
+        text-align: center;
+    }
+    
+    #selectedItemImageContainer {
+        text-align: center;
+    }
+    
+    #selectedItemImage {
+        width: 90px;
+        height: 70px;
+        border-radius: 20%;
+    }
+    
 </style>
 </head>
 <body>
@@ -295,7 +334,7 @@
                 <img style="padding-left: 2%; width: 70px; border-radius: 80px; padding-top: 1%; padding-bottom: 1%" src="Pics/Logo-Pics/logo.png"/>
                 <h1 style=" padding: 20px 15px 5px 5px;"><span style="color: rgb(10, 148, 10);">Agriculture</span> & <span style=" color:rgb(250, 201, 151);">Food Production</span></h1>
                 <div id="menu">
-                    <a href="#"><img src="Pics/Products-Pics/icons/cart.png" width="25px" height="20px"/></a>
+                    <a style="cursor: pointer;" onclick="openCartbyIcon()"><img src="Pics/Products-Pics/icons/cart.png" width="25px" height="20px"/></a>
                     <a href="homeAFP.html"><span>Home</span></a>
                     <a href="aboutAFP.html"><span>About</span></a>
                     <a style="text-decoration: underline rgb(197, 115, 47); color: rgb(197, 115, 47);" href="products.html"><span>Products</span></a>
@@ -327,53 +366,29 @@
                         <h1 style=" color: rgb(71, 238, 65);padding: 50px;">Friut Section</h1>
                     </div>
                     <div class="products-container-list">
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Apple</p>
                             <img src="Pics/Products-Pics/friuts/Apple.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>  
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Banana</p>
                             <img src="Pics/Products-Pics/friuts/Banana.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Grapes</p>
                             <img src="Pics/Products-Pics/friuts/Grapes.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>  
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Lemon</p>
                             <img src="Pics/Products-Pics/friuts/Lemon.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
-                        </div>
-                        <div class="product-container">
-                            <p class="products-name">Watermelon</p>
-                            <img src="Pics/Products-Pics/friuts/Watermelon.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
-                            <div class="price">Price: 100/kg</div>    
-                        </div>
-                        <div class="product-container">
-                            <p class="products-name">Orange</p>
-                            <img src="Pics/Products-Pics/friuts/Orange.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
-                            <div class="price">Price: 100/kg</div>     
-                        </div>
-                        <div class="product-container">
-                            <p class="products-name">Pineapple</p>
-                            <img src="Pics/Products-Pics/friuts/Pineapple.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
-                            <div class="price">Price: 100/kg</div>    
-                        </div>
-                        <div class="product-container">
-                            <p class="products-name">Strawberry</p>
-                            <img src="Pics/Products-Pics/friuts/Strawberry.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
-                            <div class="price">Price: 100/kg</div>    
                         </div>
                     </div>
                 </section>
@@ -382,52 +397,28 @@
                     <div class="sections">
                         <h1 style=" color: rgb(255, 72, 0); padding: 50px;">Vegetables Section</h1>
                     </div>
-                    <div class="products-container-list">
-                        <div class="product-container">
+                    <div class="products-container-list" >
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Bellpepper</p>
                             <img src="Pics/Products-Pics/vegetables/Bellpepper.jpeg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>    
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Broccoli</p>
                             <img src="Pics/Products-Pics/vegetables/Broccoli.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Vegetables</p>
                             <img src="Pics/Products-Pics/vegetables/Cabbage.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>    
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Carrots</p>
                             <img src="Pics/Products-Pics/vegetables/Carrots.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
-                            <div class="price">Price: 100/kg</div>     
-                        </div>
-                        <div class="product-container">
-                            <p class="products-name">Eggplant</p>
-                            <img src="Pics/Products-Pics/vegetables/Eggplant.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div> 
-                            <div class="price">Price: 100/kg</div>    
-                        </div>
-                        <div class="product-container">
-                            <p class="products-name">Garlic</p>
-                            <img src="Pics/Products-Pics/vegetables/Garlic.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div> 
-                            <div class="price">Price: 100/kg</div>    
-                        </div>
-                        <div class="product-container">
-                            <p class="products-name">Onion</p>
-                            <img src="Pics/Products-Pics/vegetables/Onion.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
-                            <div class="price">Price: 100/kg</div>     
-                        </div>
-                        <div class="product-container">
-                            <p class="products-name">Tomato</p>
-                            <img src="Pics/Products-Pics/vegetables/Tomato.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
@@ -439,31 +430,25 @@
                         <h1 style=" color: rgb(105, 81, 0); padding: 50px;">Crops Section</h1>
                     </div>
                     <div class="products-container-list">
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Barley</p>
                             <img src="Pics/Products-Pics/crops/Barley.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Corn</p>
                             <img src="Pics/Products-Pics/crops/Corn.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div> 
                             <div class="price">Price: 100/kg</div>    
                         </div>
-                        <div class="product-container">
-                            <p class="products-name">Millet</p>
-                            <img src="Pics/Products-Pics/crops/Millet.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div> 
-                            <div class="price">Price: 100/kg</div>    
-                        </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Rice</p>
                             <img src="Pics/Products-Pics/crops/Rice.jpg"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Wheat</p>
                             <img src="Pics/Products-Pics/crops/wheat.png"/>
                             <div><button id="cart" type="submit" name="submit">Add to Cart</button></div> 
@@ -477,22 +462,22 @@
                         <h1 style=" color: rgb(105, 81, 0); padding: 50px;">Seeds Section</h1>
                     </div>
                     <div class="products-container-list">
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Grains</p>
                             <img src="Pics/Products-Pics/seeds/Grains.jpg"/>
-                            <div><button id="cart" type="button" onclick="openCart()" name="submit">Add to Cart</button></div> 
+                            <div><button id="cart" type="button" name="submit">Add to Cart</button></div> 
                             <div class="price">Price: 100/kg</div>    
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Legumes</p>
                             <img src="Pics/Products-Pics/seeds/Legumes.jpg"/>
-                            <div><button id="cart" type="button" onclick="openCart()" name="submit">Add to Cart</button></div> 
+                            <div><button id="cart" type="button" name="submit">Add to Cart</button></div> 
                             <div class="price">Price: 100/kg</div>    
                         </div>
-                        <div class="product-container">
+                        <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Nuts</p>
                             <img src="Pics/Products-Pics/seeds/Nuts.jpeg"/>
-                            <div><button id="cart" type="button" onclick="openCart()" name="submit">Add to Cart</button></div>  
+                            <div><button id="cart" type="button" name="submit">Add to Cart</button></div>  
                             <div class="price">Price: 100/kg</div>   
                         </div>
                     </div>
@@ -512,71 +497,101 @@
     </div>
 
     <!-- Cart Popup checkout -->
-    <div id="Cart-Popup" class="popup">
         <div id="mycart" class="cart">
-            <div class="cart-container">
+            <div class="form-container">
+            <form class="cart-form">
                <span class="close-btn" onclick="closeCart()">&times;</span>
-               <div class="cart-content">
+               <div class="cart-content" style="text-align: center;">
                     <h2>Customer Information</h2>
-                    <!-- Add your input fields and form elements here -->
-                    <label for="customerName">Name:</label>
-                    <input type="text" id="customerName" name="customerName" required>
-                    <br>
-                    <label for="customerEmail">Email:</label>
-                    <input type="email" id="customerEmail" name="customerEmail" required>
-                    <br>
-                    <!-- Add more input fields as needed -->
-                    <button type="submit" onclick="submitForm()">Submit</button>
+                    <div class="input-container">
+                        <input type="text" id="customerName" name="customerName" placeholder="Name: " required/>
+                    </div>
+                    <div class="input-container">
+                        <input type="text" id="customerAddress" name="customerAddress" placeholder="Address" required/>
+                    </div>
+                    <div class="input-container">
+                        <input type="tel" id="Contact" name="contactnumber" placeholder="Contact Number: " required/>
+                    </div>
+
+                    <button type="submit">Checkout</button>
                 </div>
+                <div id="selectedItemImageContainer">
+                    <img id="selectedItemImage" >
+                </div>
+                <div id="selectedItemsSection">
+                    <h4>Selected Items:</h4>
+                    <ul id="selectedItemsList"></ul>
+                </div>
+            </form>
             </div>
         </div>
-    </div>
-    <!-- Access Key Popup -->
-    <!-- <div id="accessKeyPopup" class="access-key-popup">
-        <label for="accessKeyInput">Enter Access Key:</label>
-        <input type="text" id="accessKeyInput">
-        <button onclick="validateAccessKey()">Submit</button>
-    </div> -->
-    <!-- Access key Popup -->
-    <!-- <script>
-        // Function to validate the access key and redirect to the login link
-        function validateAccessKey() {
-            var enteredKey = document.getElementById("accessKeyInput").value;
-            var correctKey = "1234"; // Replace with the actual correct access key
     
-            if (enteredKey === correctKey) {
-                window.location.href = "http://localhost/AFP/loginAFP.php";
-            } else {
-                alert("Invalid Access Key. Please try again.");
+    <script>
+        // Declare Variables for Cart
+        const CartPopup = document.getElementById('mycart');
+        const selectedItemImage = document.getElementById('selectedItemImage');
+
+        let cartItems = [];
+
+        // Function when adding products to cart
+        function openCart(item) {
+            CartPopup.style.display = 'flex';
+            selectedItemImage.src = item.querySelector('.product-container img').src;
+            const itemName = item.querySelector('.product-container p.products-name').textContent;
+            cartItems.push(itemName);
+
+
+            updateSelectedItemsSection();
+        }
+
+        // Function to add the product as a selected Item
+        function updateSelectedItemsSection() {
+            const selectedItemsSection = document.getElementById('selectedItemsSection');
+            const selectedItemsList = document.getElementById('selectedItemsList');
+
+            selectedItemsList.innerHTML = '';
+            //Create the list of the added products also add remove button to remove the product
+            cartItems.forEach(item => {
+                const listItem = document.createElement('li');
+                listItem.textContent = item;
+
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remove';
+                removeButton.addEventListener('click', () => removeSelectedItem(item));
+                listItem.appendChild(removeButton);
+
+                selectedItemsList.appendChild(listItem);
+            });
+
+            selectedItemsSection.style.display = cartItems.length > 0 ? 'block' : 'none';
+
+            if (cartItems.length === 0) {
+                selectedItemImage.src = ''; 
             }
         }
-    
-        // Function to display the access key popup
-        function showAccessKeyPopup() {
-            var popup = document.getElementById("accessKeyPopup");
-            popup.style.display = "block";
+        // Function to remove product to the selected products
+        function removeSelectedItem(item) {
+            const itemIndex = cartItems.indexOf(item);
+            if (itemIndex !== -1) {
+                cartItems.splice(itemIndex, 1);
+                updateSelectedItemsSection();
+            }
         }
-    
-        // Event listener to trigger the popup when the login link is clicked
-        document.getElementById("loginLink").addEventListener("click", function (event) {
-            event.preventDefault(); // Prevent the default link behavior
-            showAccessKeyPopup();
-        });
-    </script> -->
-    <script>
-        function openCart() {
-          document.getElementById('mycart').style.display = 'flex';
+
+        // For opening through cart Icon
+        function openCartbyIcon() {
+            CartPopup.style.display = 'flex';
         }
-    
+        // For The close button 
         function closeCart() {
-          document.getElementById('mycart').style.display = 'none';
+            CartPopup.style.display = 'none';
         }
     
         function submitForm() {
           // Add logic to handle form submission
           // You can use JavaScript to retrieve values from input fields and perform further actions
-          alert('Form submitted!');
-          closeCart();
+            alert('Thanks for Buying!');
+            closeCart();
         }
     </script>
 </body>
