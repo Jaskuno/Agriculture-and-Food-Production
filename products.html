@@ -296,10 +296,6 @@
         color:White;
       }
     }
-
-    #selectedItemsSection {
-        text-align: center;
-    }
     
     #selectedItemsList {
         list-style-type: none;
@@ -314,16 +310,16 @@
         text-align: center;
     }
     
-    #selectedItemImageContainer {
-        text-align: center;
-    }
-    
     #selectedItemImage {
         width: 90px;
         height: 70px;
         border-radius: 20%;
     }
-    
+    .product-container button.disabled {
+        pointer-events: none;
+        background-color: #ccc; /* Change the color to your desired disabled state */
+        color: #999; /* Change the color to your desired disabled state */
+    }
 </style>
 </head>
 <body>
@@ -499,7 +495,7 @@
     <!-- Cart Popup checkout -->
         <div id="mycart" class="cart">
             <div class="form-container">
-            <form class="cart-form">
+            <form class="cart-form" style="max-width: 500px; max-height: 800px; width: 300px;">
                <span class="close-btn" onclick="closeCart()">&times;</span>
                <div class="cart-content" style="text-align: center;">
                     <h2>Customer Information</h2>
@@ -513,12 +509,12 @@
                         <input type="tel" id="Contact" name="contactnumber" placeholder="Contact Number: " required/>
                     </div>
 
-                    <button type="submit">Checkout</button>
+                    <button type="submit" onclick="submitForm()">Checkout</button>
                 </div>
-                <div id="selectedItemImageContainer">
+                <div id="selectedItemImageContainer" style="text-align: center;">
                     <img id="selectedItemImage" >
                 </div>
-                <div id="selectedItemsSection">
+                <div id="selectedItemsSection" style="text-align: center;">
                     <h4>Selected Items:</h4>
                     <ul id="selectedItemsList"></ul>
                 </div>
@@ -535,11 +531,17 @@
 
         // Function when adding products to cart
         function openCart(item) {
+            // Check if the button is disabled, return if true
+            if (item.querySelector('.product-container button').classList.contains('disabled')) { return; }
+
+            // Selected Item functionality, get product iamge and text, then put it to cart on selected products
             CartPopup.style.display = 'flex';
             selectedItemImage.src = item.querySelector('.product-container img').src;
             const itemName = item.querySelector('.product-container p.products-name').textContent;
             cartItems.push(itemName);
-
+          
+            // Disable the button after clicking
+            item.querySelector('.product-container button').classList.add('disabled');
 
             updateSelectedItemsSection();
         }
@@ -563,11 +565,6 @@
                 selectedItemsList.appendChild(listItem);
             });
 
-            selectedItemsSection.style.display = cartItems.length > 0 ? 'block' : 'none';
-
-            if (cartItems.length === 0) {
-                selectedItemImage.src = ''; 
-            }
         }
         // Function to remove product to the selected products
         function removeSelectedItem(item) {

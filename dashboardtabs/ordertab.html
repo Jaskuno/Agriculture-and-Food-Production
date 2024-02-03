@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders</title>
+    <style>
+        body {
+            font-family:'Times New Roman', Times, serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('background.jpg'); /* Replace 'farm_background.jpg' with the actual path to your image */
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            color: #555;
+        }
+
+        .container {
+            width: 80%;
+            margin: 50px auto;
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        header img {
+            width: 50px; /* Adjust the size as needed */
+            margin-right: 50x;
+        }
+
+        h2 {
+            color: #008000;
+        }
+
+        input[type="text"] {
+            width: calc(25% - 15px);
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        .filter-controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .filter-controls button {
+            background-color: #184911;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .filter-controls button:hover {
+            background-color: #45a049;
+        }
+
+        .order-info {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f9f9f9;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .order-info div {
+            flex: 1;
+            margin-right: 10px;
+        }
+
+        .order-info div:last-child {
+            margin-right: 0;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .notification {
+            color: red;
+            margin-top: 10px;
+        }
+
+        /* Back Button */
+        #backButton {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px;
+            background-color: #ddd;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        #backButton:hover {
+            background-color: #bbb;
+        }
+
+        /* Social Links */
+        .social-links {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .social-links img {
+            width: 30px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .social-links img:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+
+<!-- Back Button Linked to Another HTML File -->
+<button id="backButton" onclick="goBack()">Back</button>
+
+<div class="container">
+    <header>
+        <img src="logo.png" alt="Logo"> <!-- Replace 'logo.png' with the actual path to your logo image -->
+        <h2>Agriculture and Food Production</h2>
+    </header>
+
+    <div class="filter-controls">
+        <input type="text" id="customerFilter" placeholder="Filter by customer name">
+        <input type="text" id="productFilter" placeholder="Filter by product">
+        <button onclick="applyFilters()">Apply Filters</button>
+        <button onclick="clearFilters()">Clear Filters</button>
+    </div>
+
+    <table id="orderTable">
+        <thead>
+            <tr>
+                <th>Order ID</th>
+                <th>Customer Name</th>
+                <th>Item</th>
+                <th>Product</th>
+                <th>Address</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Sample data, replace this with your actual data -->
+            <tr>
+                <td>1</td>
+                <td>Joanvic Vargas</td>
+                <td>Wheat</td>
+                <td>Organic Wheat</td>
+                <td>Biñan City</td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>Jaspher Baet</td>
+                <td>Rice</td>
+                <td>Basmati Rice</td>
+                <td>Biñan City</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <div id="notification" class="notification"></div>
+</div>
+
+<!-- Social Links -->
+<div class="social-links">
+    <img src="facebook_icon.png" alt="Facebook">
+    <img src="twitter_icon.png" alt="Twitter">
+    <img src="instagram_icon.png" alt="Instagram">
+</div>
+
+<script>
+    function applyFilters() {
+        var customerFilter = document.getElementById("customerFilter").value.toLowerCase();
+        var productFilter = document.getElementById("productFilter").value.toLowerCase();
+
+        var table = document.getElementById("orderTable");
+        var rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+        var notification = document.getElementById("notification");
+
+        var notFound = true;
+
+        for (var i = 0; i < rows.length; i++) {
+            var customerName = rows[i].getElementsByTagName("td")[1].innerText.toLowerCase();
+            var product = rows[i].getElementsByTagName("td")[3].innerText.toLowerCase();
+
+            if (customerName.includes(customerFilter) && product.includes(productFilter)) {
+                rows[i].style.display = "";
+                notFound = false;
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+
+        if (notFound) {
+            notification.innerText = "No matching orders found.";
+        } else {
+            notification.innerText = "";
+        }
+    }
+
+    function goBack() {
+        window.location.href = 'dashboard.html'; // Replace with the actual HTML page
+    }
+
+    function clearFilters() {
+        document.getElementById("customerFilter").value = "";
+        document.getElementById("productFilter").value = "";
+
+        var table = document.getElementById("orderTable");
+        var rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+        var notification = document.getElementById("notification");
+
+        for (var i = 0; i < rows.length; i++) {
+            rows[i].style.display = "";
+        }
+
+        notification.innerText = "";
+    }
+</script>
+
+</body>
+</html>
