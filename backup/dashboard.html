@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale-1.0" />
+    <title>The farm</title>
+    <style>
+        :root {
+            --pink: #aa780c;
+        }
+
+        /*icon menu */
+        .icons {
+            position: relative;
+        }
+
+        .dropdown {
+            display: inline-block;
+            position: relative;
+        }
+
+        .fas.fa-user {
+            /* icon to */
+            font-size: 20px;
+            position: relative;
+            left: 50px;
+            color: #333;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            /* Add smooth transition for scale */
+        }
+
+        .fas.fa-user.clicked {
+            transform: scale(1.2);
+            /* Scale the icon on click */
+        }
+
+        .user-name {
+            color: #fff;
+            font-size: 16px;
+            padding: 10px;
+            text-align: center;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            z-index: 1;
+            opacity: 0;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+            /* Add smooth transition for opacity and scale */
+            border-radius: 8px;
+            transform-origin: top right;
+            /* Set transform origin to the top right corner */
+        }
+
+        .dropdown-content.active {
+            display: block;
+            opacity: 1;
+            transform: scaleY(1);
+            /* Ensure the menu scales vertically */
+        }
+
+        .dropdown-content a {
+            padding: 20px 15px 15px 20px;
+            margin-top: 20px;
+            font-size: 20px;
+            color: #fff;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+            /* Add smooth transition for background color */
+        }
+
+        .dropdown-content a:hover {
+            background-color: none;
+        }
+
+        /*-------------------------------------------*/
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            outline: none;
+            border: none;
+            text-decoration: none;
+            text-transform: capitalize;
+            transition: 0.2s linear;
+        }
+
+        html {
+            font-size: 62.5%;
+            scroll-behavior: smooth;
+            scroll-padding-top: 6rem;
+            overflow-x: hidden;
+        }
+
+        section {
+            padding: 2rem 9%;
+        }
+
+        .heading {
+            text-align: center;
+            font-size: 4rem;
+            color: #333;
+            padding: 1rem;
+            margin: 2rem 0;
+            background: rgba(255, 51, 153, 0.05);
+        }
+
+        .heading span {
+            color: var(--pink);
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 1rem;
+            border-radius: 5rem;
+            background: #333;
+            color: #fff;
+            padding: 0.9rem 3.5rem;
+            cursor: pointer;
+            font-size: 1.7rem;
+        }
+
+        .btn:hover {
+            background: var(--pink);
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: #ffff;
+            padding: 2rem 9%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            z-index: 1000;
+            box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 3rem;
+            color: #16660f;
+            font-weight: bolder;
+            margin-right: 80%;
+        }
+
+        header .logo span {
+            color: var(--pink);
+        }
+
+        header .navbar a {
+            font-size: 2rem;
+            color: #666;
+        }
+
+        header .icons a:hover {
+            color: var(--pink);
+        }
+
+        header #toggler {
+            display: none;
+        }
+
+        header .fa-bars {
+            font-size: 3rem;
+            color: #333;
+            border-radius: 0.5rem;
+            padding: 0.5rem 1.5rem;
+            cursor: pointer;
+            border: 0.1rem solid rgba(0, 0, 0, 0.3);
+            display: none;
+        }
+
+        #toggler:checked~#menu {
+            transform: none;
+        }
+
+        #sliding-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 999;
+        }
+
+        #toggler:checked+#sliding-menu-overlay {
+            display: block;
+        }
+
+        #burger {
+            display: block;
+            position: fixed;
+            top: 3rem;
+
+            left: 3rem;
+            z-index: 1001;
+        }
+
+        #burger input {
+            position: absolute;
+            top: -7px;
+            width: 40px;
+            height: 32px;
+            cursor: pointer;
+            opacity: 0;
+            z-index: 2;
+        }
+
+        .burgLine {
+            display: block;
+            width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+            background: #cdcdcd;
+            border-radius: 3px;
+        }
+
+        #menu {
+            position: relative;
+            left: -35px;
+            top: 19px;
+            width: 200px;
+            height: auto;
+            background: #a58030;
+            list-style-type: none;
+            transform: translate(-110%, 0);
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+            box-shadow: 10px 5px 5px rgba(0, 0, 0, 0.3);
+        }
+
+        #menu li {
+            display: flex;
+            align-items: center;
+            /* Vertical alignment */
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+            /* Use the specified font stack */
+            transition: background-color 0.3s ease;
+            padding-top: 26px;
+        }
+
+        #menu img {
+            height: 90px;
+            width: 90px;
+            margin-right: -10px;
+            /* Add some right margin for spacing */
+        }
+
+        #menu span {
+            display: inline-block;
+            vertical-align: middle;
+        }
+
+        #menu a {
+            /* design ng tezxt under ng menu*/
+            text-decoration: none;
+            color: white;
+        }
+
+        #menu li:hover {
+            background-color: none;
+        }
+
+        #menu li:hover img {
+            transform: scale(1.1);
+            /* Increase the scale on hover */
+            filter: grayscale(0%);
+            /* Remove grayscale filter on hover */
+        }
+
+        #menu li:hover span {
+            font-size: 15px;
+            /* Increase font size on hover */
+            color: black;
+            /* Change text color on hover */
+        }
+
+        #burger input:checked~#menu {
+            transform: none;
+        }
+
+        /* ---------------------------------------------------------------------end of code---------------------------------------------------------------------------- */
+
+        @media (max-width: 991px) {
+            html {
+                font-size: 55%;
+            }
+
+            header {
+                padding: 2rem;
+            }
+
+            section {
+                padding: 2rem;
+            }
+
+            .home {
+                background-position: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            html .fa-bars {
+                display: block;
+            }
+
+            header .navbar {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: #eee;
+                border-top: 0.1rem solid rgba(0, 0, 0, 0.1);
+                display: none;
+                /* Hide the menu initially */
+            }
+
+            header #toggler:checked~.navbar {
+                display: block;
+                /* Show the menu when the input is checked */
+            }
+
+            header .navbar a {
+                margin: 1.5rem;
+                padding: 1.5rem;
+                background: #fff;
+                border: 0.1rem solid rgba(0, 0, 0, 0.1);
+                display: block;
+            }
+
+            .home .content h3 {
+                font-size: 5rem;
+            }
+
+            .home .content span {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 450px) {
+            html {
+                font-size: 50%;
+            }
+
+            .heading {
+                font-size: 3rem;
+            }
+        }
+
+        /* Main Body */
+        main {
+            height: 100vh;
+        }
+
+        #main-div1-upper {
+            position: relative;
+            height: 300px;
+            background-color: #16660f;
+        }
+
+        #main-div2-lower {
+            position: relative;
+            background-color: gray;
+            display: flex;
+            height: fit-content;
+        }
+
+        .div2-content {
+            position: relative;
+            background-color: #a58030;
+            width: 100%;
+            height: 334px;
+            margin: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <input type="checkbox" id="toggler" style="margin-top: 100px; z-index: -3" />
+        <label for="toggler" class="fas fa-bars"></label>
+        <div id="burger">
+            <input type="checkbox" />
+            <li class="burgLine"></li>
+            <li class="burgLine"></li>
+            <li class="burgLine"></li>
+            <ul id="menu">
+                <a href="#">
+                    <li><img src="Pics/Dashboard-Pics/final-pic/dashboard.png" /><span>DASHBOARD</span></li>
+                </a>
+                <a href="#">
+                    <li><img src="Pics/Dashboard-Pics/final-pic/order.png" /><span>ORDERS</span></li>
+                </a>
+                <a href="#">
+                    <li>
+                        <img src="Pics/Dashboard-Pics/final-pic/inventory.png" /><span>INVENTORY<span></span></span>
+                    </li>
+                </a>
+                <a href="#">
+                    <li><img src="Pics/Dashboard-Pics/final-pic/sales.png" /><span>SALES</span></li>
+                </a>
+                <a href="#">
+                    <li><img src="Pics/Dashboard-Pics/final-pic/teams.png" /><span>TEAMS</span></li>
+                </a>
+            </ul>
+        </div>
+        <a href="#" class="logo">THE FARM<span>.</span></a>
+        <div class="icons">
+            <div class="dropdown" id="userDropdown">
+                <a href="#" class="fas fa-user" onclick="toggleDropdown('userDropdown')">
+                </a>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Settings</a>
+                    <a href="homeAFP.html">Logout</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div id="main-div1-upper"></div>
+        <div id="main-div2-lower">
+            <div class="div2-content"></div>
+            <div class="div2-content"></div>
+            <div class="div2-content"></div>
+        </div>
+    </main>
+
+    <div id="sliding-menu-overlay"></div>
+
+    <script>
+        function toggleDropdown(dropdownId) {
+            var dropdown = document.getElementById(dropdownId);
+            var dropdownContent = dropdown.querySelector(".dropdown-content");
+
+            if (dropdownContent.classList.contains("active")) {
+                dropdownContent.classList.remove("active");
+            } else {
+                dropdownContent.classList.add("active");
+            }
+        }
+    </script>
+</body>
+
+</html>

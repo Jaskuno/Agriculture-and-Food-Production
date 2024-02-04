@@ -570,8 +570,20 @@
         function removeSelectedItem(item) {
             const itemIndex = cartItems.indexOf(item);
             if (itemIndex !== -1) {
+                // Remove the item from the cartItems array
                 cartItems.splice(itemIndex, 1);
+    
+                // Update the selected items section
                 updateSelectedItemsSection();
+    
+                // Find the corresponding product container and enable the button
+                const productContainers = document.querySelectorAll('.product-container');
+                productContainers.forEach(container => {
+                    const productName = container.querySelector('.products-name').textContent;
+                    if (productName === item) {
+                        container.querySelector('button').classList.remove('disabled');
+                    }
+                });
             }
         }
 

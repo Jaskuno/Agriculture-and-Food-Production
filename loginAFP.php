@@ -18,7 +18,7 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
             //$displayUsername = isset($row['employee_Username']) === $AccUsername && isset($row['employee_PW']) !== $AccPass ? htmlspecialchars($AccUsername) : ''; 
         
         if ($result->num_rows > 0) {
-            header("Location: http://localhost/AFP/dashboard.html");
+            header("Location: http://localhost/AFP/dashboardAFP.php#dashboard");
             exit();
         }
         else {
@@ -53,7 +53,7 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
         position: relative;
         height: auto;
         width: 100%;
-        border-radius: 2px;
+        border-radius: 10px;
         background-color: rgba(0, 0, 0, 0.267);
         /*Top Right Bottom Left */
         color:rgb(255, 255, 255);
@@ -109,7 +109,7 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
         background-color: rgba(0, 0, 0, 0.404);
         padding: 1vh;
         justify-content: center;
-        border-radius: 10%;
+        border-radius: 2%;
     }
 
     /*FOOOOOOOOOOOOOOOOOOOOOTTTTTTTTTTTTTTTTTTTTTEEEEEEEEEEEEEEEEEEEERRRRRRRRR*/
