@@ -330,10 +330,7 @@
 
 	<main class="main">
 		<!-- For dashboard -->
-		<div id="dashboard" style="padding: 100px 10px 10px 10px; background-color: aliceblue; display:block;">
-		<div style="text-align: center; background-image: linear-gradient(black,black)">
-			<h1 style="font-size:50px; color: wheat; letter-spacing: 3px; width: 100%; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Welcome To the System</h1>
-		</div>
+		<div id="dashboard" style="padding: 100px 10px 10px 10px; background-color: aliceblue; display:block; height:100vh;">
 			<div class="db_Container" style="display:block; padding: 10px; background-color: #184911;">
 				<div class="db_upperDiv" style=" display: flex;">
 					<div class="ud_Content" style="background-color:#a58030; padding:10px; width:100%; height:fit-content;">
@@ -378,10 +375,7 @@
 		<!-- dashboard End -->
 
 		<!-- Orders -->
-		<div id="orders" style="padding-top:100px; background-color:#184911;">
-			<div style="text-align: center; background-image: linear-gradient(black,black)">
-				<h1 style="font-size:50px; color: wheat; letter-spacing: 3px; width: 100%; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Welcome To the System</h1>
-			</div>
+		<div id="orders" style="padding-top:100px; background-color:#184911; height:100vh;">
 			<div style="padding:20px;">
 				<div class="orders">
     					<div class="filter-controls">
@@ -429,10 +423,7 @@
 
 
 		<!-- For inventory -->
-		<div id="inventory" style="padding-top:100px; background-color: #a58030;">
-			<div style="text-align: center; background-image: linear-gradient(black,black)">
-				<h1 style="font-size:50px; color: wheat; letter-spacing: 3px; width: 100%; font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;">Welcome To the System</h1>
-			</div>
+		<div id="inventory" style="padding-top:100px; background-color: #a58030; height:100vh;">
 			<div class="inventory" style="padding:10px;">
 				<div style="background-color: brown; padding:20px;">
     			<!-- Product Input Form -->
