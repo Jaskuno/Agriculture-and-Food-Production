@@ -101,10 +101,9 @@
 	}
 	#settings img{
 		filter: invert(30%);
-		transition-duration: 1s;
+		transition-duration: .3s;
 		&:hover {
 			filter: invert(0%);
-			transform: rotate(180deg);
 		}
 	}
 	
