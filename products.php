@@ -55,52 +55,6 @@
     #menu a:hover {
         text-decoration: underline #fdde87c7;
     }
-        /* Key Access style */
-        /* .access-key-popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    } /* .access-key-popup {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        padding: 20px;
-        background-color: #fff;
-        border: 1px solid #ccc;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-    } */
-
-    /* Drop down Login
-    #dropdown-container {
-        display: none;
-        position: absolute;
-        background-color: grey;
-        border-radius: 20%;
-        width:90px;
-        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-        z-index: 1;
-    }
-    #dropdown-container a {
-        color: black;
-        padding: 5px;
-        font-size: 20px;
-        border-right: none;
-    }
-    #dropdown-container a:hover {
-        background-color: #ddd;
-    }
-    #dropdown:hover #dropdown-container {
-        display: block;
-    } */
-
     /*MAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIIIIIIIIIIIIIIIIIIIIIIIIIIIINNNNNNNNNNNNN*/
 
     /* Products Introduction style */
@@ -247,8 +201,8 @@
         }
 
         #findUs img {
-            height: 80px;
-            width: 80px;
+            height: 30px;
+            width: 30px;
 
             &:hover {
                 mix-blend-mode: multiply;
@@ -296,10 +250,6 @@
         color:White;
       }
     }
-
-    #selectedItemsSection {
-        text-align: center;
-    }
     
     #selectedItemsList {
         list-style-type: none;
@@ -314,16 +264,16 @@
         text-align: center;
     }
     
-    #selectedItemImageContainer {
-        text-align: center;
-    }
-    
     #selectedItemImage {
         width: 90px;
         height: 70px;
         border-radius: 20%;
     }
-    
+    .product-container button.disabled {
+        pointer-events: none;
+        background-color: #ccc; /* Change the color to your desired disabled state */
+        color: #999; /* Change the color to your desired disabled state */
+    }
 </style>
 </head>
 <body>
@@ -340,13 +290,6 @@
                     <a style="text-decoration: underline rgb(197, 115, 47); color: rgb(197, 115, 47);" href="products.html"><span>Products</span></a>
                     <a href="servicesAFP.html"><span>Services<span></a>
                     <a id="loginLink" href="http://localhost/AFP/loginAFP.php">Log-in</a>
-                    <!-- <div id="dropdown">
-                        <a href="#"><span>Log-in</span></a>
-                        <div id="dropdown-container">
-                            <a class="dropdown-content" href="http://localhost/AFP/customerLogin.php">Customer</a>
-                            <a class="dropdown-content" href="http://localhost/AFP/loginAFP.php">Employee</a>
-                        </div>
-                    </div> -->
                 </div>
             </nav>
         </header>
@@ -369,25 +312,25 @@
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Apple</p>
                             <img src="Pics/Products-Pics/friuts/Apple.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>  
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Banana</p>
                             <img src="Pics/Products-Pics/friuts/Banana.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Grapes</p>
                             <img src="Pics/Products-Pics/friuts/Grapes.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>  
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Lemon</p>
                             <img src="Pics/Products-Pics/friuts/Lemon.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
                     </div>
@@ -401,25 +344,25 @@
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Bellpepper</p>
                             <img src="Pics/Products-Pics/vegetables/Bellpepper.jpeg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>    
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Broccoli</p>
                             <img src="Pics/Products-Pics/vegetables/Broccoli.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Vegetables</p>
                             <img src="Pics/Products-Pics/vegetables/Cabbage.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>    
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Carrots</p>
                             <img src="Pics/Products-Pics/vegetables/Carrots.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
                     </div>
@@ -433,25 +376,25 @@
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Barley</p>
                             <img src="Pics/Products-Pics/crops/Barley.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Corn</p>
                             <img src="Pics/Products-Pics/crops/Corn.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div> 
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
                             <div class="price">Price: 100/kg</div>    
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Rice</p>
                             <img src="Pics/Products-Pics/crops/Rice.jpg"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div>
+                            <div><button type="submit" name="submit">Add to Cart</button></div>
                             <div class="price">Price: 100/kg</div>     
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Wheat</p>
                             <img src="Pics/Products-Pics/crops/wheat.png"/>
-                            <div><button id="cart" type="submit" name="submit">Add to Cart</button></div> 
+                            <div><button type="submit" name="submit">Add to Cart</button></div> 
                             <div class="price">Price: 100/kg</div>    
                         </div>
                     </div>
@@ -465,19 +408,19 @@
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Grains</p>
                             <img src="Pics/Products-Pics/seeds/Grains.jpg"/>
-                            <div><button id="cart" type="button" name="submit">Add to Cart</button></div> 
+                            <div><button type="button" name="submit">Add to Cart</button></div> 
                             <div class="price">Price: 100/kg</div>    
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Legumes</p>
                             <img src="Pics/Products-Pics/seeds/Legumes.jpg"/>
-                            <div><button id="cart" type="button" name="submit">Add to Cart</button></div> 
+                            <div><button type="button" name="submit">Add to Cart</button></div> 
                             <div class="price">Price: 100/kg</div>    
                         </div>
                         <div class="product-container" onclick="openCart(this)">
                             <p class="products-name">Nuts</p>
                             <img src="Pics/Products-Pics/seeds/Nuts.jpeg"/>
-                            <div><button id="cart" type="button" name="submit">Add to Cart</button></div>  
+                            <div><button type="button" name="submit">Add to Cart</button></div>  
                             <div class="price">Price: 100/kg</div>   
                         </div>
                     </div>
@@ -499,7 +442,7 @@
     <!-- Cart Popup checkout -->
         <div id="mycart" class="cart">
             <div class="form-container">
-            <form class="cart-form">
+            <form class="cart-form" action="http://localhost/AFP/dbconnect_products.php" method="post" style="max-width: 500px; max-height: 800px; width: 300px;">
                <span class="close-btn" onclick="closeCart()">&times;</span>
                <div class="cart-content" style="text-align: center;">
                     <h2>Customer Information</h2>
@@ -510,22 +453,22 @@
                         <input type="text" id="customerAddress" name="customerAddress" placeholder="Address" required/>
                     </div>
                     <div class="input-container">
-                        <input type="tel" id="Contact" name="contactnumber" placeholder="Contact Number: " required/>
+                        <input type="tel" id="Contact" name="contactnumber" placeholder="Contact Number: " pattern="[0-9]{11}" required/>
                     </div>
-
-                    <button type="submit">Checkout</button>
+                    <button type="submit" name="Checkout">Checkout</button>
                 </div>
-                <div id="selectedItemImageContainer">
+                <div id="selectedItemImageContainer" style="text-align: center;">
                     <img id="selectedItemImage" >
                 </div>
-                <div id="selectedItemsSection">
+                <div id="selectedItemsSection" style="text-align: center;">
                     <h4>Selected Items:</h4>
                     <ul id="selectedItemsList"></ul>
                 </div>
             </form>
             </div>
+            
         </div>
-    
+       
     <script>
         // Declare Variables for Cart
         const CartPopup = document.getElementById('mycart');
@@ -535,11 +478,23 @@
 
         // Function when adding products to cart
         function openCart(item) {
+            // Check if the button is disabled, return if true
+            if (item.querySelector('.product-container button').classList.contains('disabled')) { return; }
+
+            // Get product information
+            const itemName = item.querySelector('.product-container p.products-name').textContent;
+            const itemPrice = item.querySelector('.product-container .price').textContent;
+
+            // Selected Item functionality, get product iamge and text, then put it to cart on selected products
             CartPopup.style.display = 'flex';
             selectedItemImage.src = item.querySelector('.product-container img').src;
-            const itemName = item.querySelector('.product-container p.products-name').textContent;
-            cartItems.push(itemName);
-
+            cartItems.push({
+                name: itemName,
+                price: itemPrice,
+            });
+          
+            // Disable the button after clicking
+            item.querySelector('.product-container button').classList.add('disabled');
 
             updateSelectedItemsSection();
         }
@@ -549,32 +504,45 @@
             const selectedItemsSection = document.getElementById('selectedItemsSection');
             const selectedItemsList = document.getElementById('selectedItemsList');
 
+            const hiddenInput = document.createElement("input");
+            hiddenInput.type = "hidden";
+            hiddenInput.name = "selectedItems";
+            hiddenInput.value = JSON.stringify(cartItems);
+            document.querySelector("form.cart-form").appendChild(hiddenInput);
+
             selectedItemsList.innerHTML = '';
-            //Create the list of the added products also add remove button to remove the product
+            // Create the list of the added products also add remove button to remove the product
             cartItems.forEach(item => {
                 const listItem = document.createElement('li');
-                listItem.textContent = item;
+                const price = parseFloat(item.price.match(/\d+/)[0]); // Extract numeric part
+                listItem.textContent = `${item.name} - ${price.toFixed(2)}`; // Display formatted price
 
                 const removeButton = document.createElement('button');
                 removeButton.textContent = 'Remove';
-                removeButton.addEventListener('click', () => removeSelectedItem(item));
+                removeButton.addEventListener('click', () => removeSelectedItem(item.name));
                 listItem.appendChild(removeButton);
 
                 selectedItemsList.appendChild(listItem);
             });
-
-            selectedItemsSection.style.display = cartItems.length > 0 ? 'block' : 'none';
-
-            if (cartItems.length === 0) {
-                selectedItemImage.src = ''; 
-            }
         }
         // Function to remove product to the selected products
         function removeSelectedItem(item) {
-            const itemIndex = cartItems.indexOf(item);
+            const itemIndex = cartItems.findIndex(item => item.name === itemName);
             if (itemIndex !== -1) {
+                // Remove the item from the cartItems array
                 cartItems.splice(itemIndex, 1);
+    
+                // Update the selected items section
                 updateSelectedItemsSection();
+    
+                // Find the corresponding product container and enable the button
+                const productContainers = document.querySelectorAll('.product-container');
+                productContainers.forEach(container => {
+                    const productName = container.querySelector('.products-name').textContent;
+                    if (productName === itemName) {
+                        container.querySelector('button').classList.remove('disabled');
+                    }
+                });
             }
         }
 
@@ -586,13 +554,7 @@
         function closeCart() {
             CartPopup.style.display = 'none';
         }
-    
-        function submitForm() {
-          // Add logic to handle form submission
-          // You can use JavaScript to retrieve values from input fields and perform further actions
-            alert('Thanks for Buying!');
-            closeCart();
-        }
+
     </script>
 </body>
 </html>

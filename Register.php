@@ -233,7 +233,7 @@
         <div id="menu"> 
           <a href="homeAFP.html"><span>Home</span></a> 
           <a href="aboutAFP.html"><span>About</span></a> 
-          <a href="products.html"><span>Products</span></a> 
+          <a href="http://localhost/AFP/products.php"><span>Products</span></a> 
           <a href="servicesAFP.html"><span>Services<span></a> 
           <a style="text-decoration: underline rgb(197, 115, 47); color: rgb(197, 115, 47);" href="#" style="border: none;"><span>Log-in</span></a>
           <!-- <div id="dropdown">

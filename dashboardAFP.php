@@ -388,27 +388,26 @@
     					<table id="orderTable">
         					<thead>
             					<tr>
-                					<th>Order ID</th>
                 					<th>Customer Name</th>
-                					<th>Item</th>
-                					<th>Product</th>
+									<th>Product</th>
+                					<th>Price</th>
+                					<th>Contact</th>
                 					<th>Address</th>
             					</tr>
         					</thead>
         					<tbody>
-            					<!-- Sample data, replace this with your actual data -->
             					<tr>
-                					<td>1</td>
                 					<td>Joanvic Vargas</td>
                 					<td>Wheat</td>
-                					<td>Organic Wheat</td>
+                					<td>100.00</td>
+									<td>09128473829</td>
                 					<td>Biñan City</td>
             					</tr>
            						<tr>
-                					<td>2</td>
                 					<td>Jaspher Baet</td>
                 					<td>Rice</td>
-                					<td>Basmati Rice</td>
+									<td>100.00</td>
+                					<td>09128473829</td>
                 					<td>Biñan City</td>
             					</tr>
             					<!-- Add more rows as needed -->
@@ -474,38 +473,76 @@
         var notFound = true;
 
         for (var i = 0; i < rows.length; i++) {
-            var customerName = rows[i].getElementsByTagName("td")[1].innerText.toLowerCase();
-            var product = rows[i].getElementsByTagName("td")[3].innerText.toLowerCase();
+            var customerName = rows[i].getElementsByTagName("td")[0].innerText.toLowerCase();
+            var product = rows[i].getElementsByTagName("td")[1].innerText.toLowerCase();
 
             if (customerName.includes(customerFilter) && product.includes(productFilter)) {
-                rows[i].style.display = "";
+                rows[i].style.display = "auto";
                 notFound = false;
             } else {
                 rows[i].style.display = "none";
             }
         }
 
-        if (notFound) {
-            notification.innerText = "No matching orders found.";
-        } else {
-            notification.innerText = "";
-        }
-    }
+        	if (notFound) {
+            	notification.innerText = "No matching orders found.";
+        	} 	else {
+            	notification.innerText = "";
+        	}
+    	}
 
-    function clearFilters() {
-        document.getElementById("customerFilter").value = "";
-        document.getElementById("productFilter").value = "";
+    	function clearFilters() {
+        	document.getElementById("customerFilter").value = "";
+        	document.getElementById("productFilter").value = "";
 
-        var table = document.getElementById("orderTable");
-        var rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
-        var notification = document.getElementById("notification");
+        	var table = document.getElementById("orderTable");
+        	var rows = table.getElementsByTagName("tbody")[0].getElementsByTagName("tr");
+        	var notification = document.getElementById("notification");
 
-        for (var i = 0; i < rows.length; i++) {
-            rows[i].style.display = "";
-        }
+        	for (var i = 0; i < rows.length; i++) {
+            	rows[i].style.display = "";
+        	}
 
-        notification.innerText = "";
-    }
+        	notification.innerText = "";
+    	}
+	
+	</script>
+ <!-- To get the data in both orders and customers table from the database -->
+	<script>
+    	document.addEventListener('DOMContentLoaded', function () {
+        	fetchOrdersData();
+    	});
+
+    	function fetchOrdersData() {
+        	// Using AJAX to fetch data from the server
+        	var xhr = new XMLHttpRequest();
+        	xhr.open('GET', 'http://localhost/AFP/get_order_customer.php', true);
+
+        	xhr.onreadystatechange = function () {
+            	if (xhr.readyState == 4 && xhr.status == 200) {
+                	var data = JSON.parse(xhr.responseText);
+                	populateOrdersTable(data);
+            	}
+        	};
+
+        	xhr.send();
+    	}
+
+    	function populateOrdersTable(data) {
+        	var orderTableBody = document.querySelector('#orderTable tbody');
+
+        	orderTableBody.innerHTML = '';
+
+        	data.forEach(function (order) {
+            	var row = document.createElement('tr');
+            	row.innerHTML = `<td>${order.customer_Name}</td>
+                            	<td>${order.product_Name}</td>
+                             	<td>${order.product_Price}</td>
+                             	<td>${order.customer_Contact}</td>
+                            	<td>${order.customer_Address}</td>`;
+            	orderTableBody.appendChild(row);
+        	});
+    	}
 </script>
 </body>
 </html>
