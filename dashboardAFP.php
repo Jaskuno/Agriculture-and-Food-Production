@@ -164,12 +164,17 @@
 	/* Dashboard Style */
 	.ld_Content {
 		width:100%;
-		background-color: #333;
+		background-color: rgba(0, 0, 0, 0.452);
 		height:fit-content;
-		padding:10px;
+		padding:20px;
 		border-radius: 3%;
 		margin:20px;
 		color:aliceblue;
+		text-align: center;
+	}
+	.ld_Content h1 {
+		background-color: #f2f2f2;
+		color:black;
 	}
 	/* Profile style */
 	.profile_content {
@@ -274,6 +279,46 @@
         .notification {
             color: red;
             margin-top: 10px;
+        }
+		/* Sales Style */
+		#sales {
+			padding:100px 30px 30px 30px;
+			background-color: #184911;
+			justify-content: center;
+			max-height: 600px;
+		}
+		#sales .container {
+			max-height: 600px;
+			max-width: 70%;
+            margin: 20px auto;
+            padding: 10px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        #sales .container table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        #sales .container th, #sales .container td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        #sales .container th {
+            background-color: #f2f2f2;
+        }
+
+        #sales .container tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        #sales .container h2 {
+            color: #333;
         }
 	/* Inventory Style */
 	#pieChartContainer {
@@ -449,47 +494,23 @@
 			<div class="db_Container" style="display:block; padding: 10px; background-color: #184911;">
 				<div class="db_upperDiv" style=" display: flex;">
 					<div class="ud_Content" style="background-color:#a58030; padding:10px; width:100%; height:fit-content;">
-						<p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,
-						 totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae 
-						 dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit,
-						  sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro 
-						  quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non 
-						  numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. 
-						  Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, 
-						  nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea 
-						  voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo 
-						  voluptas nulla pariatur?"
-						</p>
-					</div>
-					<div></div>
+						</div>
 				</div>
 				<div class="db_lowerDiv" style="display: flex;">
-					<div class="ld_Content"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-						exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-						in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. 
-						Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim
-						 id est laborum."</p>
+					<div class="ld_Content"><p><h1>SALES</h1>
+The agriculture farming sector has witnessed a commendable 50% increase in revenue, showcasing the industry's ability to thrive in evolving market conditions. Strategic planning, product focus, and regional targeting will be key to sustaining and building upon this positive momentum.
+Geographical Impact: The revenue increase was not uniform across all regions, with specific geographical areas showing higher growth rates. Understanding regional variations is essential for targeted marketing and sales strategies.
+</p>
 					</div>
-					<div class="ld_Content"><p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod 
-						tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud 
-						exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
-						reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint 
-						occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+					<div class="ld_Content"><p><h1>Inventory</h1>The agriculture farming sector has experienced a successful sales period, resulting in near-complete depletion of inventory. This presents an opportunity to learn from consumer preferences, optimize inventory management strategies, and capitalize on the momentum for sustained business success. Timely restocking and strategic planning are key components for maintaining positive sales trends.</p>
 					</div>
 					<div class="ld_Content">
-						<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut 
-							labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco 
-							laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in 
-							voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat 
-							cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
+					<p><h1>ORDERS</h1>The agriculture farming sector has experienced notable success in fulfilling orders, with a particular emphasis on crop items and rice. This achievement underscores the importance of aligning products with market trends and efficiently managing the supply chain. Proactive inventory planning and continued attention to consumer preferences will be crucial for sustaining this positive sales trajectory. However,  The agriculture farming sector witnessed an impressive surge in sales, with a notable emphasis on crop items and rice. These products have emerged as top-performers, contributing substantially to overall revenue and Seasonal factors have played a role in the success of crop items and rice sales. Recognizing and leveraging seasonal demand patterns can guide future production and marketing strategies.</p>
 					</div>
 				</div>
 			</div>
 		</div>
 		<!-- dashboard End -->
-
-
 
 		<!-- Orders -->
 		<div id="orders" style="padding-top:100px; background-color:#184911; height:100vh;">
@@ -537,11 +558,75 @@
 		</div>
 		<!-- Orders End -->
 
+		<!-- For Sales -->
+		<div id="sales">
+		<div class="container">
+    <h2>Total Sales</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Total Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add your data dynamically here -->
+            <tr>
+                <h1>Current Date and Time</h1>
+                 <td><p id="datetime"></p></td>
+                <td>30,000</td>
+            </tr>
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+
+    <h2>Product Purchase</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Quantity</th>
+                <th>Price</th>
+                <th>Total Sale</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Add your data dynamically here -->
+            <tr>
+                <td>Rice</td>
+                <td>20000</td>
+                <td>1000</td>
+                <td>5000</td>
+            
+            </tr>
+
+            <tr>
+                <td>Seed</td>
+                <td>10000</td>
+                <td>100</td>
+                <td>3000</td>
+            
+            </tr>
+
+            <tr>
+                <td>Banana</td>
+                <td>10000</td>
+                <td>180</td>
+                <td>2000</td>
+            
+            </tr>
+
+            <!-- Add more rows as needed -->
+        </tbody>
+    </table>
+</div>
+</div>
+		<!-- Sales End -->
 
 		<!-- For inventory -->
 		<div id="inventory" style="padding-top:100px; background-color: #a58030; height:100vh;">
 			<div class="inventory" style="padding:10px;">
-				<div style="background-color: brown; padding:20px;">
+				<div style="background-color: rgba(0, 65, 0, 0.774); padding:20px; color:white;">
     			<!-- Product Input Form -->
     				<form id="productForm">
         				<label for="productName">Product:</label>
@@ -554,7 +639,7 @@
     				</form>
 
    			 		<!-- Table to Display Results -->
-    				<table id="inventoryTable">
+    				<table id="inventoryTable" style="color:black">
         				<thead>
             				<tr>
                 				<th>Product</th>
@@ -571,6 +656,14 @@
         				<canvas id="pieChart"></canvas>
         				<button class="reset-button" onclick="resetChart()">Reset Chart</button>
     				</div>
+				</div>
+				<div style="Padding:20px; text-align:center; background-color: rgba(255,255,255,0.5); font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-weight:bold;">
+				The agriculture farming sector has experienced a successful sales period, resulting in near-complete depletion of inventory. This presents an opportunity to learn from consumer preferences, optimize inventory management strategies, and capitalize on the momentum for sustained business success. Timely restocking and strategic planning are key components for maintaining positive sales trends.
+
+
+Demand Analysis: Conduct a thorough analysis of sales data to identify patterns and understand which products contributed most to the inventory depletion. Use this information to refine future inventory management strategies.
+
+Replenishment Planning: Initiate a timely restocking plan for popular items to ensure continuity in meeting consumer demand. Implement efficient supply chain practices to minimize restocking delays.
 				</div>
 			</div>
 		</div>
