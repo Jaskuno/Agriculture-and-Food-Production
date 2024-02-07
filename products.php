@@ -518,6 +518,8 @@
                 listItem.textContent = `${item.name} - ${price.toFixed(2)}`; // Display formatted price
 
                 const removeButton = document.createElement('button');
+                removeButton.type = "button";
+                removeButton.name = "submit";
                 removeButton.textContent = 'Remove';
                 removeButton.addEventListener('click', () => removeSelectedItem(item.name));
                 listItem.appendChild(removeButton);
@@ -526,15 +528,15 @@
             });
         }
         // Function to remove product to the selected products
-        function removeSelectedItem(item) {
+        function removeSelectedItem(itemName) {
             const itemIndex = cartItems.findIndex(item => item.name === itemName);
+
             if (itemIndex !== -1) {
-                // Remove the item from the cartItems array
+            // Remove the item from the cartItems
                 cartItems.splice(itemIndex, 1);
-    
-                // Update the selected items section
+
                 updateSelectedItemsSection();
-    
+
                 // Find the corresponding product container and enable the button
                 const productContainers = document.querySelectorAll('.product-container');
                 productContainers.forEach(container => {
@@ -543,8 +545,9 @@
                         container.querySelector('button').classList.remove('disabled');
                     }
                 });
-            }
+            }       
         }
+
 
         // For opening through cart Icon
         function openCartbyIcon() {
