@@ -1,3 +1,26 @@
+<?php
+	$employee_ID = isset($_GET['employee_ID']) ? $_GET['employee_ID'] : '';
+
+	session_start();
+	$_SESSION['employee_ID'] = $employee_ID;
+		function connect_to_mysql() { return mysqli_connect("localhost", "root", "", "agri"); }
+		function fetch_user_info($employee_ID) {
+    		$connection = connect_to_mysql();
+
+    		$query = "SELECT employee_Name, employee_Address, employee_Birthdate, employee_Email, employee_Username, employee_PW FROM employee WHERE employee_ID = '$employee_ID'";
+			
+    		$result = mysqli_query($connection, $query);
+
+    		if ($result && mysqli_num_rows($result) > 0) { $user_info = mysqli_fetch_assoc($result); } 
+			else {$user_info = null;}
+
+    		mysqli_close($connection);
+
+    		return $user_info;
+		}
+	$user_info = fetch_user_info($employee_ID);
+?>
+
 <!DOCTYPE html>
 <html>
 <head> 
@@ -147,6 +170,34 @@
 		border-radius: 3%;
 		margin:20px;
 		color:aliceblue;
+	}
+	/* Profile style */
+	.profile_content {
+		margin: 10px;
+		background-image:linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.60)); 
+		border: .2px solid wheat;
+		border-radius: 10%;
+	}
+	.profile_content p {
+		padding:10px 0;
+		margin:0;
+	}
+	.employee_informations {
+		padding:40px 80px;
+		font-family: Georgia, 'Times New Roman', Times, serif;
+		flex-wrap: wrap;
+		display: flex;
+		font-size: 20px;
+
+	}
+	.employee_informations label {
+		padding-right: 20px;
+	}
+	.emp_in_cont {
+		background-color: rgba(255,255,255,0.6);
+		margin: 10px;
+		padding: 20px 0;
+		border-radius: 5%;
 	}
 	/* Orders Style */
 	.orders {
@@ -302,9 +353,9 @@
 					<a href="#dashboard"><li><img src="Pics/Dashboard-Pics/final-pic/dashboard.png"/><span>DASHBOARD</span></li></a>
 					<a href="#orders"><li><img src="Pics/Dashboard-Pics/final-pic/order.png"/><span>ORDERS</span></li></a>
 					<hr>
-					<a href="#"><li><img src="Pics/Dashboard-Pics/final-pic/sales.png"/><span>SALES</span></li></a>
+					<a href="#sales"><li><img src="Pics/Dashboard-Pics/final-pic/sales.png"/><span>SALES</span></li></a>
 					<a href="#inventory"><li><img src="Pics/Dashboard-Pics/final-pic/inventory.png"/><span>INVENTORY<span></li></a>
-					<a href="#"><li><img src="Pics/Dashboard-Pics/final-pic/teams.png"/><span>TEAMS</span></li></a>
+					<a href="#teams"><li><img src="Pics/Dashboard-Pics/final-pic/teams.png"/><span>TEAMS</span></li></a>
 				</ul>
 			</div>
 			<div style="width:100%; overflow:hidden; padding:10px; position: relative; align-items: center; justify-content: center; text-align:center;">
@@ -317,7 +368,7 @@
 				</h1>
 			</div>
 			<div id="settings">
-				<a href="#"><img width=40px height=40px src="Pics/Dashboard-Pics/settings.png"/></a>
+				<a href="#profile"><img width=40px height=40px src="Pics/Dashboard-Pics/settings.png"/></a>
 				<div class="dropdown-content">
         			<a href="homeAFP.html">Logout</a>
    				</div>
@@ -329,6 +380,70 @@
 	<!-- Main Container -->
 
 	<main class="main">
+		<!-- For Profile -->
+		<div id="profile" style="background-color: rgb(78, 53, 0); display:flex; padding: 110px 20px 50px 20px;">
+			<div>
+				<div class="profile_content">
+					<img src="Pics/Dashboard-Pics/huh.jpeg" style="width:200px; border-radius:10%;"/>
+				</div>
+				<div class="profile_content" style="border-radius: 0%; padding: 10px; color:#ddd; text-align:center;">
+					<p><?php echo $user_info['employee_Name']; ?></p><br>
+					<p><?php echo $user_info['employee_Address']; ?></p><br>
+					<p><?php echo $user_info['employee_Birthdate']; ?></p><br>
+					<p><?php echo $user_info['employee_Email']; ?></p>
+					<p><?php echo $user_info['employee_Username']; ?></p>
+				</div>
+			</div>
+			<div class="profile_content" style="width: 100%; height:450px; background-color:rgba(9, 10, 49, 0.788); padding:20px; border-radius:5%;">
+				<form action="http://localhost/AFP/pf_Update.php" method="post" style="display: flex;">
+                <?php
+                if ($user_info) {
+                    ?>
+					<div class="employee_informations_container" style="display: flex; flex-wrap:wrap; justify-content:center; ">
+					<div style="display: flex; margin:10px; width:100%; flex-wrap:wrap; justify-content:center;">
+						<div class="emp_in_cont">
+						<div class="employee_informations">
+							<label for="employee_Name">Name: </label>
+							<input id="employee_Name" name="employee_Name" placeholder="name" type="text" value="<?php echo $user_info['employee_Name']; ?>"/>
+						</div>
+						<div class="employee_informations">
+							<label for="employee_Address">Address: </label>                  		
+							<input id="employee_Address" name="employee_Address" placeholder="Address" type="text" value="<?php echo $user_info['employee_Address']; ?>"/>
+						</div>
+						<div class="employee_informations">
+							<label for="employee_Birthdate">Birthday: </label>                  		
+							<input id="employee_Birthdate" name="employee_Birthdate" placeholder="Birthday" type="date" value="<?php echo $user_info['employee_Birthdate']; ?>"/>
+						</div>
+						</div>
+						<div class="emp_in_cont">
+						<div class="employee_informations">
+							<label for="employee_Email">Email: </label>
+							<input id="employee_Email" name="employee_Email" placeholder="Email" type="email" value="<?php echo $user_info['employee_Email']; ?>"/>
+						</div>
+                    	<div class="employee_informations">
+							<label for="employee_Username">Username: </label>
+							<input id="employee_Username" name="employee_Username" placeholder="Username" type="text" value="<?php echo $user_info['employee_Username']; ?> "/>      		
+						</div>
+						<div class="employee_informations">
+							<label for="employee_Password">Password: </label>
+							<input id="employee_Password" name="employee_Password" placeholder="Password" type="password" value="<?php echo $user_info['employee_PW']; ?>"/>
+						</div>
+						</div>
+						<div>
+							<button type="submit" style="padding:10px; cursor:pointer;">Update</button>
+						</div>
+					</div>
+					</div>
+                    <?php
+                } else {
+                    echo "User not found.";
+                }
+                ?>
+            </form>
+			</div>
+        </div>
+		<!-- Profile End -->
+		
 		<!-- For dashboard -->
 		<div id="dashboard" style="padding: 100px 10px 10px 10px; background-color: aliceblue; display:block; height:100vh;">
 			<div class="db_Container" style="display:block; padding: 10px; background-color: #184911;">
@@ -373,6 +488,8 @@
 			</div>
 		</div>
 		<!-- dashboard End -->
+
+
 
 		<!-- Orders -->
 		<div id="orders" style="padding-top:100px; background-color:#184911; height:100vh;">

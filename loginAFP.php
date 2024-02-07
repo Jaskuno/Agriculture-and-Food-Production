@@ -18,7 +18,7 @@ if (!$conn) {die("Connection failed:" . mysqli_connect_error());}
             //$displayUsername = isset($row['employee_Username']) === $AccUsername && isset($row['employee_PW']) !== $AccPass ? htmlspecialchars($AccUsername) : ''; 
         
         if ($result->num_rows > 0) {
-            header("Location: http://localhost/AFP/dashboardAFP.php#dashboard");
+            header("Location: http://localhost/AFP/dashboardAFP.php?employee_ID={$row['employee_ID']}");
             exit();
         }
         else {
